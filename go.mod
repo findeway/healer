@@ -1,4 +1,4 @@
-module github.com/findeway/healer
+module healer
 
 go 1.15
 
