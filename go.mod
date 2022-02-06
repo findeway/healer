@@ -1,4 +1,4 @@
-module healer
+module github.com/findeway/healer
 
 go 1.15
 
@@ -7,6 +7,7 @@ go 1.15
 replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
 
 require (
+	github.com/findeway/healer v0.0.0-20220206044611-d1e10ff43cc2 // indirect
 	github.com/golang/protobuf v1.5.2
 	github.com/micro/go-micro/v2 v2.9.1
 	google.golang.org/protobuf v1.27.1
