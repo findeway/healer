@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package go.micro.service.healer;
+option go_package="proto/healer;healer";
+
+service Healer {
+	rpc HealList(CallRequest) returns (HealResponse) {}
+	rpc Categories(CallRequest) returns (CateResponse) {}
+	rpc Stream(StreamingRequest) returns (stream StreamingResponse) {}
+	rpc PingPong(stream Ping) returns (stream Pong) {}
+}
+message Message {
+	string say = 1;
+}
+
+message CategoryInnerResponse {
+	repeated CategoryData category = 1;
+}
+
+message CateResponse {
+	CategoryInnerResponse data = 1;
+}
+
+message CategoryData {
+	string name = 1;
+	string desc = 2;
+}
+
+message HealerInnerResponse {
+	repeated HealerGroupData healer_data = 1;
+}
+
+message HealerGroupData {
+	string tag = 1;
+	repeated HealerSingleData items = 2;
+}
+
+message HealerSingleData {
+	string name = 1;
+	string url = 2;
+}
+
+message CallRequest {
+	string name = 1;
+}
+
+message HealResponse {
+	HealerInnerResponse data = 1;
+}
+
+message StreamingRequest {
+	int64 count = 1;
+}
+
+message StreamingResponse {
+	int64 count = 1;
+}
+
+message Ping {
+	int64 stroke = 1;
+}
+
+message Pong {
+	int64 stroke = 1;
+}

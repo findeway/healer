@@ -1,0 +1,8 @@
+{
+    "categories": {
+      "Calm": "abc",
+      "Peace": "def"
+    },
+    "dir_path": "/go/go_docker_dev/kate/public",
+    "server_address": "http://101.43.188.75:8193/healerfiles/"
+}
