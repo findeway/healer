@@ -38,14 +38,6 @@ message HealerGroupData {
 message HealerSingleData {
 	string name = 1;
 	string url = 2;
-	string cover_url = 3;
-	MediaType type = 4;
-	string desc = 5;
-	enum MediaType {
-		Video = 0;
-		Image = 1;
-		Other = 2;
-	}
 }
 
 message CallRequest {
