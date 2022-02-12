@@ -94,11 +94,24 @@ func generateFileList(dir string) []*healer.HealerGroupData {
 			if subErr != nil {
 				panic(subErr)
 			}
-
 			for _, subFile := range subFiles {
 				var subName = subFile.Name()
 				if !strings.Contains(subName, "DS_Store") {
-					groupDataItems = append(groupDataItems, &healer.HealerSingleData{Name: subName, Url: serverAddress + filename + "/" + subName})
+					mediaType := healer.HealerSingleData_Video
+					var mediaUrl string = serverAddress + filename + "/" + subName
+					var coverUrl string = ""
+					if subFile.IsDir() {
+						mediaType = healer.HealerSingleData_Image
+						mediaUrl = serverAddress + filename + "/" + subName + "/media.mp4"
+						coverUrl = serverAddress + filename + "/" + subName + "/cover.png"
+					}
+					groupDataItems = append(groupDataItems, &healer.HealerSingleData{
+						Name:     subName,
+						Url:      mediaUrl,
+						CoverUrl: coverUrl,
+						Type:     mediaType,
+						Desc:     "",
+					})
 				}
 			}
 			groupDatas = append(groupDatas, &healer.HealerGroupData{Tag: filename, Items: groupDataItems})
